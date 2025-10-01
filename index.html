@@ -79,6 +79,7 @@
                 <li><a href="#home" class="nav-link">Home</a></li>
                 <li><a href="#about" class="nav-link">Über uns</a></li>
                 <li><a href="#sortiment" class="nav-link">Sortiment</a></li>
+                <li><a href="#zutaten" class="nav-link">Zutaten</a></li>
                 <li><a href="#kontakt" class="nav-link">Kontakt</a></li>
             </ul>
             <div class="nav-hamburger">
@@ -193,95 +194,99 @@
                 <p class="section-subtitle">Jede Sorte erzählt ihre eigene Geschichte</p>
             </div>
 
-            <div class="products-grid">
-                <!-- Produkt 1 -->
-                <div class="product-card fade-in-section">
-                    <div class="product-poster">
-                        <img src="img/ice-cream/vanilla.png" alt="Vanille Symphonie">
-                        <div class="product-overlay">
-                            <h3 class="product-title">Vanille Symphonie</h3>
-                            <p class="product-description">
+            <!-- Ice Cream Slideshow -->
+            <div class="ice-cream-slideshow">
+                <div class="slideshow-container">
+                    <!-- Images Track -->
+                    <div class="slideshow-track">
+                        <div class="ice-cream-slide active" data-index="0">
+                            <img src="img/ice-cream/vanilla.png" alt="Vanille Symphonie" class="ice-cream-image">
+                        </div>
+                        <div class="ice-cream-slide" data-index="1">
+                            <img src="img/ice-cream/chocolate.png" alt="Noir Intense" class="ice-cream-image">
+                        </div>
+                        <div class="ice-cream-slide" data-index="2">
+                            <img src="img/ice-cream/strawberry.png" alt="Erdbeer Romanze" class="ice-cream-image">
+                        </div>
+                        <div class="ice-cream-slide" data-index="3">
+                            <img src="img/ice-cream/pistacio.png" alt="Pistazie Avant-Garde" class="ice-cream-image">
+                        </div>
+                        <div class="ice-cream-slide" data-index="4">
+                            <img src="img/ice-cream/caramel.png" alt="Karamell Drama" class="ice-cream-image">
+                        </div>
+                        <div class="ice-cream-slide" data-index="5">
+                            <img src="img/ice-cream/lemon.png" alt="Zitrus Finale" class="ice-cream-image">
+                        </div>
+                    </div>
+
+                    <!-- Text Content (Static Position) -->
+                    <div class="slideshow-text">
+                        <!-- Text 1 - Vanilla -->
+                        <div class="text-content active" data-text="0">
+                            <span class="product-label">KLASSIKER</span>
+                            <h3 class="slide-title">Vanille Symphonie</h3>
+                            <p class="slide-description">
                                 Ein Klassiker neu interpretiert. Madagascar-Vanille trifft auf
                                 cremige Vollmilch – zeitlos und elegant.
                             </p>
                         </div>
-                    </div>
-                    <div class="product-label">KLASSIKER</div>
-                </div>
-
-                <!-- Produkt 2 -->
-                <div class="product-card fade-in-section">
-                    <div class="product-poster">
-                        <img src="img/ice-cream/chocolate.png" alt="Noir Intense">
-                        <div class="product-overlay">
-                            <h3 class="product-title">Noir Intense</h3>
-                            <p class="product-description">
+                        <!-- Text 2 - Chocolate -->
+                        <div class="text-content" data-text="1">
+                            <span class="product-label">PREMIUM</span>
+                            <h3 class="slide-title">Noir Intense</h3>
+                            <p class="slide-description">
                                 70% Kakao aus Ecuador verschmelzen mit einem Hauch von Meersalz.
                                 Ein Drama für die Sinne.
                             </p>
                         </div>
-                    </div>
-                    <div class="product-label">PREMIUM</div>
-                </div>
-
-                <!-- Produkt 3 -->
-                <div class="product-card fade-in-section">
-                    <div class="product-poster">
-                        <img src="img/ice-cream/strawberry.png" alt="Erdbeer Romanze">
-                        <div class="product-overlay">
-                            <h3 class="product-title">Erdbeer Romanze</h3>
-                            <p class="product-description">
+                        <!-- Text 3 - Strawberry -->
+                        <div class="text-content" data-text="2">
+                            <span class="product-label">SAISONAL</span>
+                            <h3 class="slide-title">Erdbeer Romanze</h3>
+                            <p class="slide-description">
                                 Sonnenverwöhnte Erdbeeren aus der Region, verfeinert mit
                                 frischer Minze. Eine Liebesgeschichte in Rosa.
                             </p>
                         </div>
-                    </div>
-                    <div class="product-label">SAISONAL</div>
-                </div>
-
-                <!-- Produkt 4 -->
-                <div class="product-card fade-in-section">
-                    <div class="product-poster">
-                        <img src="img/ice-cream/pistacio.png" alt="Pistazie Avant-Garde">
-                        <div class="product-overlay">
-                            <h3 class="product-title">Pistazie Avant-Garde</h3>
-                            <p class="product-description">
+                        <!-- Text 4 - Pistachio -->
+                        <div class="text-content" data-text="3">
+                            <span class="product-label">SIGNATURE</span>
+                            <h3 class="slide-title">Pistazie Avant-Garde</h3>
+                            <p class="slide-description">
                                 Sizilianische Pistazien treffen auf weiße Schokolade.
                                 Ein experimentelles Meisterwerk.
                             </p>
                         </div>
-                    </div>
-                    <div class="product-label">SIGNATURE</div>
-                </div>
-
-                <!-- Produkt 5 -->
-                <div class="product-card fade-in-section">
-                    <div class="product-poster">
-                        <img src="img/ice-cream/caramel.png" alt="Karamell Drama">
-                        <div class="product-overlay">
-                            <h3 class="product-title">Karamell Drama</h3>
-                            <p class="product-description">
+                        <!-- Text 5 - Caramel -->
+                        <div class="text-content" data-text="4">
+                            <span class="product-label">BESTSELLER</span>
+                            <h3 class="slide-title">Karamell Drama</h3>
+                            <p class="slide-description">
                                 Gesalzenes Karamell mit Butterscotch-Stückchen.
                                 Ein süß-salziges Spektakel.
                             </p>
                         </div>
-                    </div>
-                    <div class="product-label">BESTSELLER</div>
-                </div>
-
-                <!-- Produkt 6 -->
-                <div class="product-card fade-in-section">
-                    <div class="product-poster">
-                        <img src="img/ice-cream/lemon.png" alt="Zitrus Finale">
-                        <div class="product-overlay">
-                            <h3 class="product-title">Zitrus Finale</h3>
-                            <p class="product-description">
+                        <!-- Text 6 - Lemon -->
+                        <div class="text-content" data-text="5">
+                            <span class="product-label">VEGAN</span>
+                            <h3 class="slide-title">Zitrus Finale</h3>
+                            <p class="slide-description">
                                 Amalfi-Zitronen sorbet mit Basilikum.
                                 Ein erfrischendes Happy End.
                             </p>
                         </div>
                     </div>
-                    <div class="product-label">VEGAN</div>
+
+
+                    <!-- Slide Indicators -->
+                    <div class="slide-indicators">
+                        <span class="indicator active" data-slide="0"></span>
+                        <span class="indicator" data-slide="1"></span>
+                        <span class="indicator" data-slide="2"></span>
+                        <span class="indicator" data-slide="3"></span>
+                        <span class="indicator" data-slide="4"></span>
+                        <span class="indicator" data-slide="5"></span>
+                    </div>
                 </div>
             </div>
 
@@ -290,6 +295,54 @@
                     <span class="button-text">Alle Sorten im Shop ansehen</span>
                     <span class="button-icon">→</span>
                 </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Zutaten Section -->
+    <section id="zutaten" class="zutaten">
+        <div class="container">
+            <div class="zutaten-content">
+                <div class="zutaten-visual">
+                    <div class="ice-ball-container">
+                        <img src="img/ice-ball.png" alt="Eiskugel" class="rotating-ice-ball" id="iceBall">
+                    </div>
+                </div>
+
+                <div class="zutaten-text">
+                    <div class="zutat-item active" data-zutat="0">
+                        <span class="zutat-label">PREMIUM QUALITÄT</span>
+                        <h3 class="zutat-title">Frische Sahne</h3>
+                        <p class="zutat-description">
+                            Aus lokalen Molkereien bezogene Sahne bildet die cremige Basis
+                            für unsere Eiskreationen.
+                        </p>
+                    </div>
+                    <div class="zutat-item" data-zutat="1">
+                        <span class="zutat-label">NATÜRLICH</span>
+                        <h3 class="zutat-title">Bio-Vanille</h3>
+                        <p class="zutat-description">
+                            Madagascar-Vanille aus kontrolliert biologischem Anbau
+                            verleiht unseren Kreationen ihre einzigartige Note.
+                        </p>
+                    </div>
+                    <div class="zutat-item" data-zutat="2">
+                        <span class="zutat-label">SAISONAL</span>
+                        <h3 class="zutat-title">Regionale Früchte</h3>
+                        <p class="zutat-description">
+                            Erdbeeren, Himbeeren und andere Früchte direkt von
+                            ausgewählten Bauernhöfen aus der Region.
+                        </p>
+                    </div>
+                    <div class="zutat-item" data-zutat="3">
+                        <span class="zutat-label">HANDWERK</span>
+                        <h3 class="zutat-title">Artisan Nüsse</h3>
+                        <p class="zutat-description">
+                            Sorgfältig geröstete Pistazien und Haselnüsse für
+                            den perfekten Crunch in jedem Bissen.
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
