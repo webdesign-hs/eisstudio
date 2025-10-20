@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EisStudio West – Wo Eis zur Story wird</title>
+    <script>
+        // Check if user is logged in
+        if (sessionStorage.getItem('eisstudioLoggedIn') !== 'true') {
+            window.location.href = 'login.html';
+        }
+    </script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0A0A0A;
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #preloader-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            font-weight: 900;
+            color: #FFFFFF;
+            letter-spacing: 8px;
+            animation: fadeInOut 2s ease;
+        }
+        @keyframes fadeInOut {
+            0% { opacity: 0; transform: translateY(20px); }
+            40% { opacity: 1; transform: translateY(0); }
+            60% { opacity: 1; transform: translateY(0); }
+            100% { opacity: 0; transform: translateY(-20px); }
+        }
+        body.loading {
+            overflow: hidden;
+        }
+        .content-wrapper {
+            opacity: 0;
+            transition: opacity 0.6s ease;
+        }
+        body:not(.loading) .content-wrapper {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="loading">
+    <!-- Preloader -->
+    <div id="preloader">
+        <div id="preloader-text">EISSTUDIO WEST</div>
+    </div>
+
+    <!-- Content Wrapper -->
+    <div class="content-wrapper">
+    <!-- Film Grain Overlay -->
+    <div class="film-grain"></div>
+
+    <!-- Parallax Element -->
+    <div class="parallax-element" id="parallaxElement">
+        <div class="floating-ice"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navigation" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-text">EISSTUDIO WEST</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#studio" class="nav-link">Das Studio</a></li>
+                <li><a href="#faelle" class="nav-link">Fälle</a></li>
+                <li><a href="#reports" class="nav-link">Reports</a></li>
+                <li><a href="#kontakt" class="nav-link">Kontakt</a></li>
+            </ul>
+            <div class="nav-hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text fade-in">
+                <h1 class="hero-title">
+                    <span class="title-line-1">EISSTUDIO</span>
+                    <span class="title-line-2">Wo Eis zur Story wird.</span>
+                </h1>
+                <p class="hero-slogan">Investigativer Genuss seit 2024</p>
+                <a href="https://eisstudio-shop.myshopify.com" class="cta-button" target="_blank">
+                    <span class="button-text">Fallakte öffnen</span>
+                    <span class="button-icon">→</span>
+                </a>
+            </div>
+
+            <div class="hero-visual">
+                <div class="spotlight spotlight-1"></div>
+                <div class="spotlight spotlight-2"></div>
+            </div>
+
+            <!-- Scroll Down Arrow -->
+            <div class="scroll-down" onclick="scrollToSection('#about')">
+                <div class="scroll-arrow">
+                    <img src="img/pfeilunten.svg" alt="Scroll Down" />
+                </div>
+                <p class="scroll-text">Scrollen</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Über uns Section -->
+    <section id="studio" class="about">
+        <div class="container">
+            <div class="section-header slide-up">
+                <h2 class="section-title">Das Studio</h2>
+                <p class="section-subtitle">Eine Reportage in drei Kapiteln</p>
+            </div>
+
+            <div class="chapters">
+                <!-- Kapitel 1 -->
+                <div class="chapter chapter-1 fade-in-section">
+                    <div class="chapter-content">
+                        <div class="chapter-text">
+                            <span class="chapter-number">KAPITEL I</span>
+                            <h3 class="chapter-title">Die Gründung</h3>
+                            <p class="chapter-description">
+                                2024 – Eine Idee nimmt Form an: Eis als Story erzählen. Nicht nur Geschmack, sondern Geschichten.
+                                In einem kleinen Studio entstand die Vision, jede Kreation wie einen investigativen Report zu behandeln –
+                                mit Recherche, Leidenschaft und den besten Quellen.
+                            </p>
+                        </div>
+                        <div class="chapter-image">
+                            <img src="img/acts/act1.png" alt="Die Gründung">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kapitel 2 -->
+                <div class="chapter chapter-2 fade-in-section">
+                    <div class="chapter-content reverse">
+                        <div class="chapter-text">
+                            <span class="chapter-number">KAPITEL II</span>
+                            <h3 class="chapter-title">Das Handwerk</h3>
+                            <p class="chapter-description">
+                                Wie Journalisten ihre Quellen prüfen, untersuchen wir jede Zutat. Tradition trifft Innovation.
+                                Unser Studio ist Redaktion und Labor zugleich – wo täglich neue Geschmacksgeschichten entstehen.
+                                Jede Sorte durchläuft unseren investigativen Prozess.
+                            </p>
+                        </div>
+                        <div class="chapter-image">
+                            <img src="img/acts/act2.png" alt="Das Handwerk">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kapitel 3 -->
+                <div class="chapter chapter-3 fade-in-section">
+                    <div class="chapter-content">
+                        <div class="chapter-text">
+                            <span class="chapter-number">KAPITEL III</span>
+                            <h3 class="chapter-title">Heute</h3>
+                            <p class="chapter-description">
+                                EisStudio West ist mehr als eine Eismanufaktur – es ist eine Story-Plattform.
+                                Mit investigativen Eissorten und einem Team aus Geschmacks-Reportern
+                                veröffentlichen wir täglich neue Fallberichte. Jede Kugel ist eine Geschichte.
+                            </p>
+                        </div>
+                        <div class="chapter-image">
+                            <img src="img/acts/act3.png" alt="Heute">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sortiment Section -->
+    <section id="faelle" class="sortiment">
+        <div class="container">
+            <div class="section-header slide-up">
+                <h2 class="section-title">Die Fälle</h2>
+                <p class="section-subtitle">Unsere investigativen Eissorten</p>
+            </div>
+
+            <!-- Ice Cream Slideshow -->
+            <div class="ice-cream-slideshow">
+                <div class="slideshow-container">
+                    <!-- Images Track -->
+                    <div class="slideshow-track">
+                        <div class="ice-cream-slide active" data-index="0">
+                            <img src="img/ice-cream/vanilla.png" alt="Vanille Symphonie" class="ice-cream-image">
+                        </div>
+                        <div class="ice-cream-slide" data-index="1">
+                            <img src="img/ice-cream/chocolate.png" alt="Noir Intense" class="ice-cream-image">
+                        </div>
+                        <div class="ice-cream-slide" data-index="2">
+                            <img src="img/ice-cream/strawberry.png" alt="Erdbeer Romanze" class="ice-cream-image">
+                        </div>
+                        <div class="ice-cream-slide" data-index="3">
+                            <img src="img/ice-cream/pistacio.png" alt="Pistazie Avant-Garde" class="ice-cream-image">
+                        </div>
+                        <div class="ice-cream-slide" data-index="4">
+                            <img src="img/ice-cream/caramel.png" alt="Karamell Drama" class="ice-cream-image">
+                        </div>
+                        <div class="ice-cream-slide" data-index="5">
+                            <img src="img/ice-cream/lemon.png" alt="Zitrus Finale" class="ice-cream-image">
+                        </div>
+                    </div>
+
+                    <!-- Text Content (Static Position) -->
+                    <div class="slideshow-text">
+                        <!-- Text 1 - Vanilla -->
+                        <div class="text-content active" data-text="0">
+                            <span class="product-label">KLASSIKER</span>
+                            <h3 class="slide-title">Vanille Symphonie</h3>
+                            <p class="slide-description">
+                                Ein Klassiker neu interpretiert. Madagascar-Vanille trifft auf
+                                cremige Vollmilch – zeitlos und elegant.
+                            </p>
+                        </div>
+                        <!-- Text 2 - Chocolate -->
+                        <div class="text-content" data-text="1">
+                            <span class="product-label">PREMIUM</span>
+                            <h3 class="slide-title">Noir Intense</h3>
+                            <p class="slide-description">
+                                70% Kakao aus Ecuador verschmelzen mit einem Hauch von Meersalz.
+                                Ein Drama für die Sinne.
+                            </p>
+                        </div>
+                        <!-- Text 3 - Strawberry -->
+                        <div class="text-content" data-text="2">
+                            <span class="product-label">SAISONAL</span>
+                            <h3 class="slide-title">Erdbeer Romanze</h3>
+                            <p class="slide-description">
+                                Sonnenverwöhnte Erdbeeren aus der Region, verfeinert mit
+                                frischer Minze. Eine Liebesgeschichte in Rosa.
+                            </p>
+                        </div>
+                        <!-- Text 4 - Pistachio -->
+                        <div class="text-content" data-text="3">
+                            <span class="product-label">SIGNATURE</span>
+                            <h3 class="slide-title">Pistazie Avant-Garde</h3>
+                            <p class="slide-description">
+                                Sizilianische Pistazien treffen auf weiße Schokolade.
+                                Ein experimentelles Meisterwerk.
+                            </p>
+                        </div>
+                        <!-- Text 5 - Caramel -->
+                        <div class="text-content" data-text="4">
+                            <span class="product-label">BESTSELLER</span>
+                            <h3 class="slide-title">Karamell Drama</h3>
+                            <p class="slide-description">
+                                Gesalzenes Karamell mit Butterscotch-Stückchen.
+                                Ein süß-salziges Spektakel.
+                            </p>
+                        </div>
+                        <!-- Text 6 - Lemon -->
+                        <div class="text-content" data-text="5">
+                            <span class="product-label">VEGAN</span>
+                            <h3 class="slide-title">Zitrus Finale</h3>
+                            <p class="slide-description">
+                                Amalfi-Zitronen sorbet mit Basilikum.
+                                Ein erfrischendes Happy End.
+                            </p>
+                        </div>
+                    </div>
+
+
+                    <!-- Slide Indicators -->
+                    <div class="slide-indicators">
+                        <span class="indicator active" data-slide="0"></span>
+                        <span class="indicator" data-slide="1"></span>
+                        <span class="indicator" data-slide="2"></span>
+                        <span class="indicator" data-slide="3"></span>
+                        <span class="indicator" data-slide="4"></span>
+                        <span class="indicator" data-slide="5"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="shop-cta">
+                <a href="https://eisstudio-shop.myshopify.com" class="cta-button secondary" target="_blank">
+                    <span class="button-text">Alle Sorten im Shop ansehen</span>
+                    <span class="button-icon">→</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Zutaten Section -->
+    <section id="zutaten" class="zutaten">
+        <div class="container">
+            <div class="zutaten-content">
+                <div class="zutaten-visual">
+                    <div class="ice-ball-container">
+                        <img src="img/ice-ball.png" alt="Eiskugel" class="rotating-ice-ball" id="iceBall">
+                    </div>
+                </div>
+
+                <div class="zutaten-text">
+                    <div class="zutat-item active" data-zutat="0">
+                        <span class="zutat-label">PREMIUM QUALITÄT</span>
+                        <h3 class="zutat-title">Frische Sahne</h3>
+                        <p class="zutat-description">
+                            Aus lokalen Molkereien bezogene Sahne bildet die cremige Basis
+                            für unsere Eiskreationen.
+                        </p>
+                    </div>
+                    <div class="zutat-item" data-zutat="1">
+                        <span class="zutat-label">NATÜRLICH</span>
+                        <h3 class="zutat-title">Bio-Vanille</h3>
+                        <p class="zutat-description">
+                            Madagascar-Vanille aus kontrolliert biologischem Anbau
+                            verleiht unseren Kreationen ihre einzigartige Note.
+                        </p>
+                    </div>
+                    <div class="zutat-item" data-zutat="2">
+                        <span class="zutat-label">SAISONAL</span>
+                        <h3 class="zutat-title">Regionale Früchte</h3>
+                        <p class="zutat-description">
+                            Erdbeeren, Himbeeren und andere Früchte direkt von
+                            ausgewählten Bauernhöfen aus der Region.
+                        </p>
+                    </div>
+                    <div class="zutat-item" data-zutat="3">
+                        <span class="zutat-label">HANDWERK</span>
+                        <h3 class="zutat-title">Artisan Nüsse</h3>
+                        <p class="zutat-description">
+                            Sorgfältig geröstete Pistazien und Haselnüsse für
+                            den perfekten Crunch in jedem Bissen.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kontakt Section -->
+    <section id="kontakt" class="kontakt">
+        <div class="container">
+            <div class="section-header slide-up">
+                <h2 class="section-title">Kontakt</h2>
+                <p class="section-subtitle">Schreiben Sie uns Ihre Geschichte</p>
+            </div>
+
+            <div class="kontakt-content">
+                <div class="kontakt-info fade-in-section">
+                    <div class="info-block">
+                        <h3 class="info-title">Besuchen Sie uns</h3>
+                        <p class="info-text">
+                            Eisstudio – Die Eismanufaktur Prada<br>
+                            Filmstraße 42<br>
+                            10117 Berlin
+                        </p>
+                    </div>
+
+                    <div class="info-block">
+                        <h3 class="info-title">Öffnungszeiten</h3>
+                        <p class="info-text">
+                            Montag – Freitag: 11:00 – 20:00<br>
+                            Samstag – Sonntag: 10:00 – 21:00
+                        </p>
+                    </div>
+
+                    <div class="info-block">
+                        <h3 class="info-title">Kontakt</h3>
+                        <p class="info-text">
+                            <a href="mailto:hello@eisstudio.de">hello@eisstudio.de</a><br>
+                            <a href="tel:+493012345678">+49 30 123 456 78</a>
+                        </p>
+                    </div>
+
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Twitter">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">EISSTUDIO</div>
+                <div class="footer-text">
+                    <p>&copy; 2024 Eisstudio – Die Eismanufaktur Prada. Alle Rechte vorbehalten.</p>
+                    <p class="footer-tagline">Ein Film von Geschmack und Leidenschaft.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    </div>
+    <!-- End Content Wrapper -->
+
+    <script src="script.js"></script>
+</body>
+</html>

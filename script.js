@@ -42,8 +42,8 @@ document.addEventListener('DOMContentLoaded', function() {
         navbar.classList.remove('on-dark', 'on-light');
 
         // Define which sections have dark backgrounds
-        const darkSections = ['home', 'sortiment', 'zutaten', 'kontakt'];
-        const lightSections = ['about'];
+        const darkSections = ['home', 'faelle', 'kontakt'];
+        const lightSections = ['studio', 'reports'];
 
         if (darkSections.includes(sectionId)) {
             navbar.classList.add('on-dark');
@@ -155,12 +155,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
             if (target === '#home') {
                 offset = 0; // Hero section - scroll to top
-            } else if (target === '#about') {
+            } else if (target === '#studio') {
                 offset = isMobile ? -20 : 25; // Higher on mobile (negative offset)
-            } else if (target === '#sortiment') {
+            } else if (target === '#faelle') {
                 offset = isMobile ? -10 : 45; // Higher on mobile
-            } else if (target === '#zutaten') {
-                offset = isMobile ? 10 : 55; // New Zutaten section
+            } else if (target === '#reports') {
+                offset = isMobile ? 10 : 55; // Reports section
             } else if (target === '#kontakt') {
                 offset = isMobile ? 0 : 65; // Higher on mobile
             }
@@ -363,159 +363,8 @@ document.addEventListener('DOMContentLoaded', function() {
         headerObserver.observe(header);
     });
 
-    // Zutaten Section - Rotating Ice Ball with Scroll Hijacking
-    const iceBall = document.getElementById('iceBall');
-    const zutatItems = document.querySelectorAll('.zutat-item');
-    let currentZutat = 0;
-    let zutatProgress = 0; // Progress through all ingredients (0-1)
-    let isInZutatenSection = false;
-    let zutatScrollLocked = false;
-    let lastScrollY = 0;
-    let snapTimeout = null;
 
-    function snapToZutatenSection() {
-        const zutatSection = document.getElementById('zutaten');
-        if (!zutatSection) return;
-
-        const rect = zutatSection.getBoundingClientRect();
-
-        // If we're close to the section but not perfectly aligned, snap to it
-        if (Math.abs(rect.top) < 200 && Math.abs(rect.top) > 10) {
-            zutatSection.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
-    }
-
-    function updateZutatenSection() {
-        if (!iceBall || zutatItems.length === 0) return;
-
-        const zutatSection = document.getElementById('zutaten');
-        if (!zutatSection) return;
-
-        const rect = zutatSection.getBoundingClientRect();
-        const windowHeight = window.innerHeight;
-
-        // Check if we're approaching or in the zutaten section
-        const isApproaching = rect.top <= 200 && rect.top >= -200;
-        isInZutatenSection = rect.top <= 100 && rect.bottom >= windowHeight - 100;
-
-        if (isApproaching && !zutatScrollLocked) {
-            // Snap to section if we're close
-            if (Math.abs(rect.top) > 10) {
-                clearTimeout(snapTimeout);
-                snapTimeout = setTimeout(() => {
-                    snapToZutatenSection();
-                }, 50);
-            }
-        }
-
-        if (isInZutatenSection) {
-            // Lock scroll and handle manually
-            if (!zutatScrollLocked) {
-                document.body.style.overflow = 'hidden';
-                zutatScrollLocked = true;
-            }
-        }
-    }
-
-    function handleZutatenScroll(deltaY) {
-        const scrollSpeed = 0.003; // Adjust this to control scroll sensitivity
-        const direction = deltaY > 0 ? 1 : -1;
-
-        // Update progress based on scroll direction
-        zutatProgress += direction * scrollSpeed;
-        zutatProgress = Math.max(0, Math.min(1, zutatProgress));
-
-        // Calculate rotation (4 full rotations = 1440 degrees)
-        const rotation = zutatProgress * 1440;
-        iceBall.style.transform = `rotate(${rotation}deg)`;
-
-        // Calculate which ingredient should be active
-        const totalIngredients = zutatItems.length;
-        const ingredientProgress = zutatProgress * totalIngredients;
-        const targetZutat = Math.floor(ingredientProgress);
-        const actualTargetZutat = Math.min(targetZutat, totalIngredients - 1);
-
-        // Change ingredient if needed
-        if (actualTargetZutat !== currentZutat) {
-            zutatItems[currentZutat].classList.remove('active');
-            currentZutat = actualTargetZutat;
-            zutatItems[currentZutat].classList.add('active');
-        }
-
-        // Check if we should unlock scrolling
-        if (zutatProgress >= 1 && deltaY > 0) {
-            // Finished all ingredients, allow scroll to continue down
-            document.body.style.overflow = 'auto';
-            zutatScrollLocked = false;
-
-            // Scroll to next section
-            const kontaktSection = document.getElementById('kontakt');
-            if (kontaktSection) {
-                kontaktSection.scrollIntoView({ behavior: 'smooth' });
-            }
-        } else if (zutatProgress <= 0 && deltaY < 0) {
-            // At beginning, allow scroll up to previous section
-            document.body.style.overflow = 'auto';
-            zutatScrollLocked = false;
-
-            // Scroll to previous section
-            const sortimentSection = document.getElementById('sortiment');
-            if (sortimentSection) {
-                sortimentSection.scrollIntoView({ behavior: 'smooth' });
-            }
-        }
-    }
-
-    // Custom wheel event handler for zutaten section
-    function handleWheelEvent(e) {
-        updateZutatenSection();
-
-        if (zutatScrollLocked) {
-            e.preventDefault();
-            handleZutatenScroll(e.deltaY);
-        }
-    }
-
-    // Add wheel event listener
-    window.addEventListener('wheel', handleWheelEvent, { passive: false });
-
-    // Add scroll event listener for snapping
-    let scrollEndTimer = null;
-    window.addEventListener('scroll', function() {
-        if (!zutatScrollLocked) {
-            clearTimeout(scrollEndTimer);
-            scrollEndTimer = setTimeout(() => {
-                snapToZutatenSection();
-            }, 100);
-        }
-    });
-
-    // Handle mobile touch events
-    let touchStartY = 0;
-    let touchEndY = 0;
-
-    window.addEventListener('touchstart', function(e) {
-        touchStartY = e.touches[0].clientY;
-    }, { passive: true });
-
-    window.addEventListener('touchmove', function(e) {
-        if (zutatScrollLocked) {
-            e.preventDefault();
-            touchEndY = e.touches[0].clientY;
-            const deltaY = touchStartY - touchEndY;
-            handleZutatenScroll(deltaY * 2); // Amplify touch sensitivity
-        }
-    }, { passive: false });
-
-    // Initialize first ingredient
-    if (zutatItems.length > 0) {
-        zutatItems[0].classList.add('active');
-    }
-
-    console.log('Eisstudio Website geladen - Wo Eis zur Filmkunst wird.');
+    console.log('sitNeis geladen - Wo Eis zur Story wird.');
 });
 
 // Preloader handling
@@ -535,118 +384,3 @@ window.addEventListener('load', function() {
     }, 2000);
 });
 
-// Ice Cream Slideshow
-let currentSlide = 0;
-let slides;
-let textContents;
-let indicators;
-let slideInterval;
-
-function showSlide(index) {
-    if (!slides || !textContents || !indicators) return;
-
-    // Remove active classes
-    slides.forEach(slide => {
-        slide.classList.remove('active', 'prev');
-    });
-    textContents.forEach(text => {
-        text.classList.remove('active');
-    });
-    indicators.forEach(indicator => {
-        indicator.classList.remove('active');
-    });
-
-    // Handle wrap around
-    if (index >= slides.length) {
-        currentSlide = 0;
-    } else if (index < 0) {
-        currentSlide = slides.length - 1;
-    } else {
-        currentSlide = index;
-    }
-
-    // Add prev class to previous slide
-    const prevIndex = currentSlide === 0 ? slides.length - 1 : currentSlide - 1;
-    if (slides[prevIndex]) {
-        slides[prevIndex].classList.add('prev');
-    }
-
-    // Add active class to current slide
-    if (slides[currentSlide]) {
-        slides[currentSlide].classList.add('active');
-    }
-
-    // Update text content with fade
-    if (textContents[currentSlide]) {
-        textContents[currentSlide].classList.add('active');
-    }
-
-    // Update indicators
-    if (indicators[currentSlide]) {
-        indicators[currentSlide].classList.add('active');
-    }
-}
-
-function changeSlide(direction) {
-    showSlide(currentSlide + direction);
-    resetInterval();
-}
-
-function goToSlide(index) {
-    showSlide(index);
-    resetInterval();
-}
-
-function startAutoplay() {
-    slideInterval = setInterval(() => {
-        changeSlide(1);
-    }, 5000); // Change slide every 5 seconds
-}
-
-function resetInterval() {
-    clearInterval(slideInterval);
-    startAutoplay();
-}
-
-// Initialize slideshow
-function initializeSlideshow() {
-    slides = document.querySelectorAll('.ice-cream-slide');
-    textContents = document.querySelectorAll('.text-content');
-    indicators = document.querySelectorAll('.indicator');
-
-    if (!slides.length || !textContents.length || !indicators.length) return;
-
-    // Set initial slide
-    currentSlide = 0;
-    showSlide(0);
-
-    // Add click events to indicators
-    indicators.forEach((indicator, index) => {
-        indicator.addEventListener('click', () => goToSlide(index));
-    });
-
-    // Start autoplay
-    startAutoplay();
-
-    // Pause on hover
-    const slideshow = document.querySelector('.ice-cream-slideshow');
-    if (slideshow) {
-        slideshow.addEventListener('mouseenter', () => {
-            clearInterval(slideInterval);
-        });
-
-        slideshow.addEventListener('mouseleave', () => {
-            startAutoplay();
-        });
-    }
-}
-
-// Call initialization after DOM is ready
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initializeSlideshow);
-} else {
-    initializeSlideshow();
-}
-
-// Make functions global for onclick handlers
-window.changeSlide = changeSlide;
