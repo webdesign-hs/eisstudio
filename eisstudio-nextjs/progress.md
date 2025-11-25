@@ -4,6 +4,25 @@
 
 ---
 
+## 2025-11-25 - Security Headers
+
+### Erledigt
+
+#### Security Headers hinzugefügt
+- `next.config.ts` - Security Headers für alle Routen:
+  - `Strict-Transport-Security` (HSTS) - erzwingt HTTPS
+  - `X-Frame-Options` - verhindert Clickjacking
+  - `X-Content-Type-Options` - verhindert MIME-Sniffing
+  - `X-XSS-Protection` - XSS-Filter
+  - `Referrer-Policy` - kontrolliert Referrer-Info
+  - `Permissions-Policy` - deaktiviert Kamera/Mikrofon/Geolocation
+
+#### Environment Variables geprüft
+- Nur `NEXT_PUBLIC_` Variablen für Shopify Storefront API (öffentlicher Token, kein Secret)
+- Keine sensiblen Daten im Frontend exponiert
+
+---
+
 ## 2025-11-25 - ReportsSection Fix
 
 ### Erledigt
