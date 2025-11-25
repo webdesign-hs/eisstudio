@@ -1,31 +1,52 @@
-import Preloader from '@/components/Preloader';
-import FilmGrain from '@/components/FilmGrain';
-import Navigation from '@/components/Navigation';
-import HeroSection from '@/components/HeroSection';
-import StudioSection from '@/components/StudioSection';
-import FaelleSection from '@/components/FaelleSection';
-import ReportsSection from '@/components/ReportsSection';
-import Footer from '@/components/Footer';
-import AuthCheck from '@/components/AuthCheck';
+'use client';
 
-export default function Home() {
+import Link from 'next/link';
+
+export default function ComingSoonPage() {
   return (
-    <>
-      <AuthCheck />
-      <Preloader />
+    <div className="login-page">
+      {/* Film Grain */}
+      <div className="film-grain"></div>
 
-      <div className="content-wrapper">
-        <FilmGrain />
-        <Navigation />
-
-        <main>
-          <HeroSection />
-          <StudioSection />
-          <FaelleSection />
-          <ReportsSection />
-          <Footer />
-        </main>
+      {/* Decorative Elements */}
+      <div className="login-decoration login-decoration-top">
+        <span className="login-decoration-dot"></span>
+        Coming Soon
       </div>
-    </>
+
+      <div className="login-decoration login-decoration-bottom">
+        Est. 2024
+      </div>
+
+      {/* Container */}
+      <div className="login-container">
+        {/* Header Bar */}
+        <div className="login-header">
+          <div className="login-logo">
+            <span className="login-logo-dot">●</span>
+            <span className="login-logo-text">sitNeis</span>
+          </div>
+          <div className="login-label">COMING SOON</div>
+        </div>
+
+        {/* Content */}
+        <div className="login-content">
+          <div>
+            <div className="login-badge">In Kürze</div>
+            <h1 className="login-title">Wir arbeiten daran</h1>
+            <p className="login-subtitle">
+              Unsere neue Website ist bald fertig. Investigativer Genuss erwartet dich.
+            </p>
+          </div>
+        </div>
+
+        {/* Footer with legal links */}
+        <div className="login-footer coming-soon-footer">
+          <Link href="/impressum" className="coming-soon-link">Impressum</Link>
+          <span className="login-footer-dot">●</span>
+          <Link href="/datenschutz" className="coming-soon-link">Datenschutz</Link>
+        </div>
+      </div>
+    </div>
   );
 }
