@@ -1743,9 +1743,10 @@ body {
 }
 
 .coming-soon-link {
-  color: var(--color-pistachio);
+  color: var(--color-narrative-black);
   text-decoration: none;
   font-size: 12px;
+  font-weight: 600;
   letter-spacing: 1px;
   transition: color 0.3s ease;
 }

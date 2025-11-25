@@ -14,9 +14,6 @@ export default function ComingSoonPage() {
         Coming Soon
       </div>
 
-      <div className="login-decoration login-decoration-bottom">
-        Est. 2024
-      </div>
 
       {/* Container */}
       <div className="login-container">
