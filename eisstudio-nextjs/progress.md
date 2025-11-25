@@ -4,6 +4,161 @@
 
 ---
 
+## 2025-11-25 - Coming Soon & Legal Pages neutral
+
+### Erledigt
+
+#### Coming Soon Seite neutralisiert
+- `app/coming-soon/page.tsx` - Kein Eis-Bezug mehr:
+  - Logo: "Coming Soon" statt "sitNeis"
+  - Titel: "In Bearbeitung"
+  - Text: "Diese Website wird gerade erstellt."
+  - Kein "Est. 2024" oder "Investigativer Genuss"
+
+#### Impressum mit echten Daten
+- `app/impressum/page.tsx` - Aktualisiert mit:
+  - Jacob Prada Abuin, Eismanufaktur Prada
+  - Parkhofstraße 88, 41836 Hückelhoven
+  - E-Mail: info@eis-five.de
+  - USt-IdNr.: DE270671119
+  - Berufshaftpflicht: Rhion Betriebshaftpflichtversicherung
+
+#### Datenschutz mit echten Daten
+- `app/datenschutz/page.tsx` - Verantwortliche Stelle aktualisiert
+
+---
+
+## 2025-11-25 - SEO Blockierung (Seite unsichtbar)
+
+### Erledigt
+
+#### Website für Suchmaschinen unsichtbar gemacht
+- `app/robots.ts` - Neue Datei erstellt:
+  - Blockiert alle Crawler (`User-Agent: *`, `Disallow: /`)
+- `app/layout.tsx` - Meta-Tags hinzugefügt:
+  - `robots: { index: false, follow: false }`
+  - `googleBot: { index: false, follow: false }`
+- `next.config.ts` - Header hinzugefügt:
+  - `X-Robots-Tag: noindex, nofollow`
+
+Die Seite wird jetzt von keiner Suchmaschine indexiert.
+
+---
+
+## 2025-11-25 - Navigation & Preloader
+
+### Erledigt
+
+#### Einheitliche Navigation
+- `components/Navigation.tsx` - Jetzt auf allen Seiten verwendet:
+  - Home, Shop, Reports Links
+  - CartIcon integriert
+  - Active-States basierend auf Pfad
+- `app/shop/page.tsx` - Navigation statt ShopNavigation
+- `app/shop/[handle]/page.tsx` - Navigation statt ShopNavigation
+- `app/blog/page.tsx` - Navigation statt ShopNavigation
+- `app/blog/[handle]/page.tsx` - Navigation statt ShopNavigation
+
+#### Nav-Links zentriert
+- `app/globals.css` - Flex-Layout angepasst:
+  - `.nav-logo` mit `flex: 1`
+  - `.nav-menu` mit `flex: 0 0 auto`
+  - `.nav-actions` mit `flex: 1` und `justify-content: flex-end`
+  - Links sind jetzt mittig im Header
+
+#### Preloader mit sessionStorage
+- `components/Preloader.tsx` - Splash Screen wird nur einmal pro Session angezeigt:
+  - Nutzt `sessionStorage` mit Key `sitNeis_preloader_shown`
+  - Zeigt Animation nur beim ersten Besuch
+  - Bei Tab-Schließen/Cache-Leerung wird es erneut angezeigt
+
+---
+
+## 2025-11-25 - Coming Soon & Legal Pages
+
+### Erledigt
+
+#### Coming Soon Seite
+- `app/coming-soon/page.tsx` - im Login-Stil mit:
+  - sitNeis Branding
+  - "Wir arbeiten daran" Message
+  - Links zu Impressum und Datenschutz
+
+#### Impressum Seite
+- `app/impressum/page.tsx` - mit Platzhaltern für:
+  - Angaben gemäß § 5 TMG
+  - Kontaktdaten
+  - USt-IdNr.
+  - EU-Streitschlichtung
+
+#### Datenschutz Seite
+- `app/datenschutz/page.tsx` - DSGVO-konform mit:
+  - Verantwortliche Stelle
+  - Datenerfassung
+  - Hosting-Info
+  - Shopify-Hinweis
+  - Nutzerrechte
+  - SSL-Verschlüsselung
+
+#### CSS
+- `app/globals.css` - Styles für Coming Soon und Legal Pages
+
+---
+
+## 2025-11-25 - Security Headers
+
+### Erledigt
+
+#### Security Headers hinzugefügt
+- `next.config.ts` - Security Headers für alle Routen:
+  - `Strict-Transport-Security` (HSTS) - erzwingt HTTPS
+  - `X-Frame-Options` - verhindert Clickjacking
+  - `X-Content-Type-Options` - verhindert MIME-Sniffing
+  - `X-XSS-Protection` - XSS-Filter
+  - `Referrer-Policy` - kontrolliert Referrer-Info
+  - `Permissions-Policy` - deaktiviert Kamera/Mikrofon/Geolocation
+
+#### Environment Variables geprüft
+- Nur `NEXT_PUBLIC_` Variablen für Shopify Storefront API (öffentlicher Token, kein Secret)
+- Keine sensiblen Daten im Frontend exponiert
+
+---
+
+## 2025-11-25 - ReportsSection Fix
+
+### Erledigt
+
+#### Report-Kacheln waren unsichtbar
+- **Problem:** `.fade-in-section` Klasse setzte `opacity: 0`, aber kein IntersectionObserver war vorhanden um `.visible` hinzuzufügen
+- **Lösung:** `fade-in-section` Klasse aus den Report-Cards entfernt
+- **Dateien:**
+  - `components/ReportsSection.tsx` - Klasse entfernt
+  - `app/globals.css` - `text-decoration: none` und `color: inherit` für `.report-card` hinzugefügt
+
+#### Fallback-Logik verbessert
+- Artikel werden jetzt auf vollständige Daten geprüft (Titel UND Bild)
+- Wenn Shopify-Artikel unvollständig sind, werden Fallback-Daten genutzt
+
+---
+
+## 2025-11-25 - CLAUDE.md Dokumentation
+
+### Erledigt
+
+#### Detaillierte Projektdokumentation erstellt
+- `CLAUDE.md` komplett überarbeitet mit:
+  - Projekt-Übersicht (Tech-Stack, Design)
+  - URLs & Deployment (Production, Staging, Infrastruktur)
+  - Shopify Integration Details
+  - Komplette Projekt-Struktur
+  - Styleguide (Farben, Fonts, Design-Prinzipien)
+  - Bekannte Probleme & Lösungen
+  - Entwicklungs-Checkliste
+- **Wichtige Anweisung:** Nach JEDER Änderung muss ein Eintrag in `progress.md` gemacht werden
+- **Git-Regel:** Keine Co-Authored-By oder Selbst-Credits in Commits
+
+---
+
 ## 2025-11-23 - Reports-Sektion Bilder-Fix
 
 ### Erledigt

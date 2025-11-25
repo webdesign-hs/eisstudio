@@ -1,5 +1,5 @@
 import { getBlogArticle, getBlogArticles } from '@/lib/shopify';
-import { ShopNavigation } from '@/components/shop';
+import Navigation from '@/components/Navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -49,7 +49,7 @@ export default async function BlogArticlePage({ params }: Props) {
 
   return (
     <div className="article-page">
-      <ShopNavigation />
+      <Navigation />
 
       {/* Breadcrumb */}
       <div className="article-breadcrumb">

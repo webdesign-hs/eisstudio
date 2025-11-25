@@ -6,7 +6,7 @@ export default function ImpressumPage() {
       <div className="film-grain"></div>
 
       <div className="legal-container">
-        <Link href="/" className="legal-back">
+        <Link href="/coming-soon" className="legal-back">
           ← Zurück
         </Link>
 
@@ -16,18 +16,17 @@ export default function ImpressumPage() {
           <section className="legal-section">
             <h2>Angaben gemäß § 5 TMG</h2>
             <p>
-              <strong>sitNeis - Die Eismanufaktur</strong><br />
-              [Vorname Nachname]<br />
-              [Straße Hausnummer]<br />
-              [PLZ Ort]
+              Jacob Prada Abuin<br />
+              Eismanufaktur Prada<br />
+              Parkhofstraße 88<br />
+              41836 Hückelhoven
             </p>
           </section>
 
           <section className="legal-section">
             <h2>Kontakt</h2>
             <p>
-              Telefon: [Telefonnummer]<br />
-              E-Mail: [E-Mail-Adresse]
+              E-Mail: info@eis-five.de
             </p>
           </section>
 
@@ -35,16 +34,24 @@ export default function ImpressumPage() {
             <h2>Umsatzsteuer-ID</h2>
             <p>
               Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:<br />
-              [USt-IdNr.]
+              DE270671119
             </p>
           </section>
 
           <section className="legal-section">
             <h2>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h2>
             <p>
-              [Vorname Nachname]<br />
-              [Straße Hausnummer]<br />
-              [PLZ Ort]
+              Jacob Prada Abuin<br />
+              Parkhofstraße 88<br />
+              41836 Hückelhoven
+            </p>
+          </section>
+
+          <section className="legal-section">
+            <h2>Angaben zur Berufshaftpflichtversicherung</h2>
+            <p>
+              <strong>Name und Sitz des Versicherers:</strong><br />
+              Rhion Betriebshaftpflichtversicherung
             </p>
           </section>
 

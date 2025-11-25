@@ -2,11 +2,29 @@
 
 import { useEffect, useState } from 'react';
 
+const PRELOADER_SESSION_KEY = 'sitNeis_preloader_shown';
+
 export default function Preloader() {
-  const [isVisible, setIsVisible] = useState(true);
+  const [isVisible, setIsVisible] = useState(false);
   const [isFading, setIsFading] = useState(false);
+  const [shouldRender, setShouldRender] = useState(false);
 
   useEffect(() => {
+    // Check if preloader was already shown in this session
+    const wasShown = sessionStorage.getItem(PRELOADER_SESSION_KEY);
+
+    if (wasShown) {
+      // Already shown this session, don't display
+      setIsVisible(false);
+      setShouldRender(false);
+      return;
+    }
+
+    // First visit in this session - show preloader
+    setShouldRender(true);
+    setIsVisible(true);
+    sessionStorage.setItem(PRELOADER_SESSION_KEY, 'true');
+
     // Add loading class to body
     document.body.classList.add('loading');
 
@@ -27,7 +45,7 @@ export default function Preloader() {
     };
   }, []);
 
-  if (!isVisible) return null;
+  if (!shouldRender || !isVisible) return null;
 
   return (
     <div
