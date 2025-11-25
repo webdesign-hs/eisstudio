@@ -78,8 +78,13 @@ export default async function ReportsSection() {
     console.error('Failed to fetch blog articles:', error);
   }
 
-  // Wenn keine Artikel, nutze Fallback
-  const useFallback = articles.length === 0;
+  // Prüfe ob Artikel vollständige Daten haben (Titel UND Bild)
+  const validArticles = articles.filter(
+    (article) => article.title && article.image?.url
+  );
+
+  // Wenn keine gültigen Artikel, nutze Fallback
+  const useFallback = validArticles.length === 0;
 
   return (
     <section id="reports" className="reports">
@@ -95,7 +100,7 @@ export default async function ReportsSection() {
             fallbackReports.map((report, index) => (
               <article
                 key={index}
-                className={`report-card fade-in-section ${report.featured ? 'featured' : ''}`}
+                className={`report-card ${report.featured ? 'featured' : ''}`}
               >
                 <div className="report-image">
                   <Image src={report.image} alt={report.title} fill />
@@ -115,7 +120,7 @@ export default async function ReportsSection() {
             ))
           ) : (
             // Shopify-Artikel
-            articles.map((article, index) => {
+            validArticles.map((article, index) => {
               const isFeatured = index === 0;
               const category = article.tags[0] || 'Report';
 
@@ -123,7 +128,7 @@ export default async function ReportsSection() {
                 <Link
                   key={article.id}
                   href={`/blog/${article.handle}`}
-                  className={`report-card fade-in-section ${isFeatured ? 'featured' : ''}`}
+                  className={`report-card ${isFeatured ? 'featured' : ''}`}
                 >
                   <div className="report-image">
                     {article.image ? (

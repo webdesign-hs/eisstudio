@@ -4,6 +4,41 @@
 
 ---
 
+## 2025-11-25 - ReportsSection Fix
+
+### Erledigt
+
+#### Report-Kacheln waren unsichtbar
+- **Problem:** `.fade-in-section` Klasse setzte `opacity: 0`, aber kein IntersectionObserver war vorhanden um `.visible` hinzuzufügen
+- **Lösung:** `fade-in-section` Klasse aus den Report-Cards entfernt
+- **Dateien:**
+  - `components/ReportsSection.tsx` - Klasse entfernt
+  - `app/globals.css` - `text-decoration: none` und `color: inherit` für `.report-card` hinzugefügt
+
+#### Fallback-Logik verbessert
+- Artikel werden jetzt auf vollständige Daten geprüft (Titel UND Bild)
+- Wenn Shopify-Artikel unvollständig sind, werden Fallback-Daten genutzt
+
+---
+
+## 2025-11-25 - CLAUDE.md Dokumentation
+
+### Erledigt
+
+#### Detaillierte Projektdokumentation erstellt
+- `CLAUDE.md` komplett überarbeitet mit:
+  - Projekt-Übersicht (Tech-Stack, Design)
+  - URLs & Deployment (Production, Staging, Infrastruktur)
+  - Shopify Integration Details
+  - Komplette Projekt-Struktur
+  - Styleguide (Farben, Fonts, Design-Prinzipien)
+  - Bekannte Probleme & Lösungen
+  - Entwicklungs-Checkliste
+- **Wichtige Anweisung:** Nach JEDER Änderung muss ein Eintrag in `progress.md` gemacht werden
+- **Git-Regel:** Keine Co-Authored-By oder Selbst-Credits in Commits
+
+---
+
 ## 2025-11-23 - Reports-Sektion Bilder-Fix
 
 ### Erledigt

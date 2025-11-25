@@ -1093,6 +1093,12 @@ body {
   transition: var(--transition-smooth);
   display: flex;
   flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+}
+
+a.report-card {
+  display: flex;
 }
 
 .report-card:hover {
