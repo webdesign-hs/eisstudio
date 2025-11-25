@@ -4,6 +4,37 @@
 
 ---
 
+## 2025-11-25 - Coming Soon & Legal Pages
+
+### Erledigt
+
+#### Coming Soon Seite
+- `app/coming-soon/page.tsx` - im Login-Stil mit:
+  - sitNeis Branding
+  - "Wir arbeiten daran" Message
+  - Links zu Impressum und Datenschutz
+
+#### Impressum Seite
+- `app/impressum/page.tsx` - mit Platzhaltern für:
+  - Angaben gemäß § 5 TMG
+  - Kontaktdaten
+  - USt-IdNr.
+  - EU-Streitschlichtung
+
+#### Datenschutz Seite
+- `app/datenschutz/page.tsx` - DSGVO-konform mit:
+  - Verantwortliche Stelle
+  - Datenerfassung
+  - Hosting-Info
+  - Shopify-Hinweis
+  - Nutzerrechte
+  - SSL-Verschlüsselung
+
+#### CSS
+- `app/globals.css` - Styles für Coming Soon und Legal Pages
+
+---
+
 ## 2025-11-25 - Security Headers
 
 ### Erledigt
