@@ -15,7 +15,7 @@ export default function ComingSoonPage() {
       </div>
 
       <div className="login-decoration login-decoration-bottom">
-        Est. 2024
+
       </div>
 
       {/* Container */}
@@ -23,19 +23,17 @@ export default function ComingSoonPage() {
         {/* Header Bar */}
         <div className="login-header">
           <div className="login-logo">
-            <span className="login-logo-dot">●</span>
-            <span className="login-logo-text">sitNeis</span>
+            <span className="login-logo-text">Coming Soon</span>
           </div>
-          <div className="login-label">COMING SOON</div>
+          <div className="login-label"></div>
         </div>
 
         {/* Content */}
         <div className="login-content">
           <div>
-            <div className="login-badge">In Kürze</div>
-            <h1 className="login-title">Wir arbeiten daran</h1>
+            <h1 className="login-title">In Bearbeitung</h1>
             <p className="login-subtitle">
-              Unsere neue Website ist bald fertig. Investigativer Genuss erwartet dich.
+              Diese Website wird gerade erstellt.
             </p>
           </div>
 

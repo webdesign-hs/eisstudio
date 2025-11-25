@@ -4,6 +4,47 @@
 
 ---
 
+## 2025-11-25 - Coming Soon & Legal Pages neutral
+
+### Erledigt
+
+#### Coming Soon Seite neutralisiert
+- `app/coming-soon/page.tsx` - Kein Eis-Bezug mehr:
+  - Logo: "Coming Soon" statt "sitNeis"
+  - Titel: "In Bearbeitung"
+  - Text: "Diese Website wird gerade erstellt."
+  - Kein "Est. 2024" oder "Investigativer Genuss"
+
+#### Impressum mit echten Daten
+- `app/impressum/page.tsx` - Aktualisiert mit:
+  - Jacob Prada Abuin, Eismanufaktur Prada
+  - Parkhofstraße 88, 41836 Hückelhoven
+  - E-Mail: info@eis-five.de
+  - USt-IdNr.: DE270671119
+  - Berufshaftpflicht: Rhion Betriebshaftpflichtversicherung
+
+#### Datenschutz mit echten Daten
+- `app/datenschutz/page.tsx` - Verantwortliche Stelle aktualisiert
+
+---
+
+## 2025-11-25 - SEO Blockierung (Seite unsichtbar)
+
+### Erledigt
+
+#### Website für Suchmaschinen unsichtbar gemacht
+- `app/robots.ts` - Neue Datei erstellt:
+  - Blockiert alle Crawler (`User-Agent: *`, `Disallow: /`)
+- `app/layout.tsx` - Meta-Tags hinzugefügt:
+  - `robots: { index: false, follow: false }`
+  - `googleBot: { index: false, follow: false }`
+- `next.config.ts` - Header hinzugefügt:
+  - `X-Robots-Tag: noindex, nofollow`
+
+Die Seite wird jetzt von keiner Suchmaschine indexiert.
+
+---
+
 ## 2025-11-25 - Navigation & Preloader
 
 ### Erledigt

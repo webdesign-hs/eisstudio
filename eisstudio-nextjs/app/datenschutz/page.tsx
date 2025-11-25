@@ -26,11 +26,11 @@ export default function DatenschutzPage() {
           <section className="legal-section">
             <h2>2. Verantwortliche Stelle</h2>
             <p>
-              <strong>sitNeis - Die Eismanufaktur</strong><br />
-              [Vorname Nachname]<br />
-              [Straße Hausnummer]<br />
-              [PLZ Ort]<br />
-              E-Mail: [E-Mail-Adresse]
+              Jacob Prada Abuin<br />
+              Eismanufaktur Prada<br />
+              Parkhofstraße 88<br />
+              41836 Hückelhoven<br />
+              E-Mail: info@eis-five.de
             </p>
           </section>
 

@@ -2,6 +2,10 @@ import type { NextConfig } from "next";
 
 const securityHeaders = [
   {
+    key: 'X-Robots-Tag',
+    value: 'noindex, nofollow'
+  },
+  {
     key: 'X-DNS-Prefetch-Control',
     value: 'on'
   },
