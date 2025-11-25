@@ -1,0 +1,186 @@
+# Progress - Eisstudio Next.js + Shopify
+
+## Status: In Entwicklung
+
+---
+
+## 2025-11-23 - Reports-Sektion Bilder-Fix
+
+### Erledigt
+
+#### Report-Bilder werden jetzt korrekt angezeigt
+- `app/globals.css` - `.report-image img` fehlte `width: 100%` und `height: 100%`
+- Next.js `Image` mit `fill` prop braucht explizite Größenangaben im CSS
+- Bilder wurden geladen, aber nicht sichtbar (nur schwarzer Hintergrund)
+
+---
+
+## 2025-11-23 - Produktseiten-Fix
+
+### Erledigt
+
+#### Shopify Client für Client-Komponenten gefixt
+- `lib/shopify/client.ts` - Cache-Optionen nur serverseitig anwenden
+- Problem: `cache` und `next.tags` Optionen funktionieren nur auf dem Server
+- Lösung: `isServer` Check hinzugefügt, Client-Fetch ohne diese Optionen
+- Produktseiten wie `/shop/eisbecher-5l-premium-edelstahl` funktionieren jetzt
+
+---
+
+## 2025-11-23 - Kategorie-Fix & Logo-Bereinigung
+
+### Erledigt
+
+#### Shopify Kategorie-Feld hinzugefügt
+- `lib/shopify/queries.ts` - GraphQL Query erweitert um `category { id name }`
+- `lib/shopify/types.ts` - ShopifyProduct Interface um `category` erweitert
+- `components/shop/ShopContent.tsx` - Verwendet jetzt `category?.name` statt nur `productType`
+- Produkte werden jetzt korrekt als "Eisbehälter" kategorisiert (nicht mehr "Sonstiges")
+
+#### Navigation Logo bereinigt
+- `components/Navigation.tsx` - `<span>●</span>` aus nav-logo entfernt
+- `components/shop/ShopNavigation.tsx` - `<span>●</span>` aus nav-logo entfernt
+- Logo zeigt jetzt nur noch "sitNeis" ohne Bullet-Point
+
+#### Shop Toolbar Margins angepasst
+- `app/globals.css` - `.toolbar-fullwidth` bekommt `max-width: 1400px` und `margin: 0 auto`
+- Suchleiste und Filter haben jetzt den gleichen Abstand wie die Produkte
+
+---
+
+## 2025-11-23 - Shop-Seite erweitert
+
+### Erledigt
+
+#### Shop-Seite mit Suche & Filter
+- `components/shop/ShopContent.tsx` - Neue Client-Komponente mit:
+  - Suchleiste volle Breite (durchsucht Titel, Beschreibung, Tags)
+  - Filter-Buttons nach Produkttyp (aus Shopify Kategorien)
+  - Sortierung (Preis, Name, Neueste)
+  - Ergebnis-Counter
+  - Empty State mit Reset-Button
+  - **Kategorie-Überschriften** nach Shopify Produkttyp gruppiert
+- `app/shop/page.tsx` - Aktualisiert mit ShopContent, ShopNavigation, ShopFooter
+- `app/shop/[handle]/page.tsx` - ShopNavigation und ShopFooter hinzugefügt
+- `app/globals.css` - Neue Styles für Toolbar, Suche, Filter, Kategorien
+
+#### Neue Komponenten
+- `components/shop/ShopNavigation.tsx` - Navigation für Shop-Seiten mit CartIcon
+- `components/shop/ShopFooter.tsx` - Footer für Shop-Seiten mit Links statt Anchors
+- `components/shop/index.ts` - Exports aktualisiert
+
+---
+
+## 2025-11-23 - Shopify Integration
+
+### Erledigt
+
+#### 1. Shopify Storefront API Setup
+- `.env.local` erstellt mit Shopify Credentials
+- `.env.example` als Template für Team erstellt
+- `.gitignore` aktualisiert (ignoriert .env* außer .env.example)
+
+#### 2. lib/shopify/ Struktur erstellt
+- `lib/shopify/types.ts` - TypeScript Interfaces (ShopifyProduct, ShopifyCart, etc.)
+- `lib/shopify/client.ts` - Fetch-Wrapper für Storefront API mit Retry-Logik
+- `lib/shopify/queries.ts` - GraphQL Queries (GET_PRODUCTS, GET_CART, etc.)
+- `lib/shopify/mutations.ts` - GraphQL Mutations (CREATE_CART, ADD_TO_CART, etc.)
+- `lib/shopify/utils.ts` - Helper-Funktionen (formatPrice, classNames, etc.)
+- `lib/shopify/index.ts` - Haupt-Export mit allen Funktionen
+
+#### 3. Cart Context erstellt
+- `context/CartContext.tsx` - Warenkorb State-Management mit React Context
+- Funktionen: addToCart, updateQuantity, removeItem, openCart, closeCart
+
+#### 4. Shop-Komponenten erstellt
+- `components/shop/ProductCard.tsx` - Produktkarte für Shop-Grid
+- `components/shop/AddToCartButton.tsx` - Button mit Loading/Success States
+- `components/shop/CartDrawer.tsx` - Warenkorb-Sidebar (Slide-in)
+- `components/shop/CartIcon.tsx` - Warenkorb-Icon mit Badge
+- `components/shop/VariantSelector.tsx` - Varianten-Auswahl (Größe, Farbe, etc.)
+- `components/shop/index.ts` - Export aller Komponenten
+
+#### 5. Shop-Seiten erstellt
+- `app/shop/page.tsx` - Shop-Übersichtsseite mit Produkt-Grid
+- `app/shop/[handle]/page.tsx` - Produktdetailseite
+
+#### 6. Layout aktualisiert
+- `app/layout.tsx` - CartProvider und CartDrawer hinzugefügt
+
+#### 7. Styles hinzugefügt
+- `app/globals.css` - Komplette Shop-Styles (Cards, Drawer, Buttons, etc.)
+
+#### 8. Next.js Config aktualisiert
+- `next.config.ts` - Shopify CDN (cdn.shopify.com) für Bilder erlaubt
+
+#### 9. Dokumentation erstellt
+- `DEPLOYMENT.md` - Komplette Deployment-Anleitung für IONOS + Coolify
+
+### Build Status
+✅ Build erfolgreich (npm run build)
+
+---
+
+## Offene Punkte
+
+### Noch zu tun
+- [ ] CartIcon in Navigation einfügen
+- [ ] Shop-Link in Navigation hinzufügen
+- [ ] IONOS VPS bestellen (VPS M empfohlen, 3€/Monat)
+- [ ] Coolify einrichten
+- [ ] Production + Staging deployen
+
+### Shopify Store
+- Domain: pnvi09-zf.myshopify.com
+- Produkte hinzugefügt:
+  - Eisbecher 500ml - Premium Edelstahl
+  - Eisbecher 2,5L - Premium Edelstahl
+  - Eisbecher 5L - Premium Edelstahl
+
+---
+
+## Dateien geändert/erstellt
+
+```
+eisstudio-nextjs/
+├── .env.local                    (neu - Shopify Credentials)
+├── .env.example                  (neu - Template)
+├── .gitignore                    (aktualisiert)
+├── next.config.ts                (aktualisiert - Shopify CDN)
+├── DEPLOYMENT.md                 (neu - Deployment Guide)
+├── progress.md                   (neu - diese Datei)
+├── app/
+│   ├── layout.tsx                (aktualisiert - CartProvider)
+│   ├── globals.css               (aktualisiert - Shop Styles)
+│   └── shop/
+│       ├── page.tsx              (neu - Shop Seite)
+│       └── [handle]/
+│           └── page.tsx          (neu - Produktseite)
+├── components/
+│   └── shop/
+│       ├── index.ts              (neu)
+│       ├── ProductCard.tsx       (neu)
+│       ├── AddToCartButton.tsx   (neu)
+│       ├── CartDrawer.tsx        (neu)
+│       ├── CartIcon.tsx          (neu)
+│       ├── VariantSelector.tsx   (neu)
+│       └── ShopContent.tsx       (neu - Suche & Filter)
+├── context/
+│   └── CartContext.tsx           (neu)
+└── lib/
+    └── shopify/
+        ├── index.ts              (neu)
+        ├── types.ts              (neu)
+        ├── client.ts             (neu)
+        ├── queries.ts            (neu)
+        ├── mutations.ts          (neu)
+        └── utils.ts              (neu)
+```
+
+---
+
+## Nächste Session
+
+1. Navigation mit CartIcon erweitern
+2. Testen ob Produkte korrekt geladen werden
+3. Ggf. Deployment vorbereiten

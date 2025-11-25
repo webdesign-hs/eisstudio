@@ -1419,6 +1419,24 @@ body {
         z-index: 1000;
     }
 
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .footer-brand-section {
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-nav {
+        justify-content: center;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+
     .nav-menu.active {
         transform: translateY(0);
         opacity: 1;
