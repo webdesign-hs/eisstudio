@@ -4,6 +4,23 @@
 
 ---
 
+## ⚠️ WICHTIG: Domain deaktiviert!
+
+**Datum:** 2025-11-25
+
+Die A-Records für `das-eisstudio.de` und `www.das-eisstudio.de` wurden bei IONOS gelöscht/pausiert.
+
+**Vor dem Go-Live nicht vergessen:**
+1. Bei IONOS einloggen
+2. A-Records wieder hinzufügen:
+   - `das-eisstudio.de` → `217.154.162.232`
+   - `www.das-eisstudio.de` → `217.154.162.232`
+3. SEO-Blockierung entfernen (robots.ts, layout.tsx, next.config.ts)
+
+**Staging bleibt erreichbar:** https://dev.das-eisstudio.de
+
+---
+
 ## 2025-11-25 - Coming Soon & Legal Pages neutral
 
 ### Erledigt
