@@ -6,7 +6,8 @@ import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { getProductByHandle, ShopifyProduct } from '@/lib/shopify';
 import { formatPrice } from '@/lib/shopify/utils';
-import { AddToCartButton, VariantSelector, ShopNavigation, ShopFooter } from '@/components/shop';
+import Navigation from '@/components/Navigation';
+import { AddToCartButton, VariantSelector, ShopFooter } from '@/components/shop';
 
 export default function ProductPage() {
   const params = useParams();
@@ -38,7 +39,7 @@ export default function ProductPage() {
   if (loading) {
     return (
       <>
-        <ShopNavigation />
+        <Navigation />
         <main className="product-page">
           <div className="container">
             <div className="product-loading">
@@ -55,7 +56,7 @@ export default function ProductPage() {
   if (!product) {
     return (
       <>
-        <ShopNavigation />
+        <Navigation />
         <main className="product-page">
           <div className="container">
             <div className="product-not-found">
@@ -80,7 +81,7 @@ export default function ProductPage() {
 
   return (
     <>
-      <ShopNavigation />
+      <Navigation />
       <main className="product-page">
         <div className="container">
           {/* Breadcrumb */}

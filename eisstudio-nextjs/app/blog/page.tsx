@@ -1,5 +1,5 @@
 import { getBlogArticles } from '@/lib/shopify';
-import { ShopNavigation } from '@/components/shop';
+import Navigation from '@/components/Navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -22,7 +22,7 @@ export default async function BlogPage() {
 
   return (
     <div className="blog-page">
-      <ShopNavigation />
+      <Navigation />
 
       {/* Hero */}
       <section className="blog-hero">

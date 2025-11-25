@@ -4,6 +4,35 @@
 
 ---
 
+## 2025-11-25 - Navigation & Preloader
+
+### Erledigt
+
+#### Einheitliche Navigation
+- `components/Navigation.tsx` - Jetzt auf allen Seiten verwendet:
+  - Home, Shop, Reports Links
+  - CartIcon integriert
+  - Active-States basierend auf Pfad
+- `app/shop/page.tsx` - Navigation statt ShopNavigation
+- `app/shop/[handle]/page.tsx` - Navigation statt ShopNavigation
+- `app/blog/page.tsx` - Navigation statt ShopNavigation
+- `app/blog/[handle]/page.tsx` - Navigation statt ShopNavigation
+
+#### Nav-Links zentriert
+- `app/globals.css` - Flex-Layout angepasst:
+  - `.nav-logo` mit `flex: 1`
+  - `.nav-menu` mit `flex: 0 0 auto`
+  - `.nav-actions` mit `flex: 1` und `justify-content: flex-end`
+  - Links sind jetzt mittig im Header
+
+#### Preloader mit sessionStorage
+- `components/Preloader.tsx` - Splash Screen wird nur einmal pro Session angezeigt:
+  - Nutzt `sessionStorage` mit Key `sitNeis_preloader_shown`
+  - Zeigt Animation nur beim ersten Besuch
+  - Bei Tab-Schließen/Cache-Leerung wird es erneut angezeigt
+
+---
+
 ## 2025-11-25 - Coming Soon & Legal Pages
 
 ### Erledigt

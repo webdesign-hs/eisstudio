@@ -1,5 +1,6 @@
 import { getProducts } from '@/lib/shopify';
-import { ShopContent, ShopNavigation, ShopFooter } from '@/components/shop';
+import Navigation from '@/components/Navigation';
+import { ShopContent, ShopFooter } from '@/components/shop';
 
 export const metadata = {
   title: 'Shop | sitNeis',
@@ -11,7 +12,7 @@ export default async function ShopPage() {
 
   return (
     <>
-      <ShopNavigation />
+      <Navigation />
 
       <main className="shop-page">
         {/* Hero Section */}
