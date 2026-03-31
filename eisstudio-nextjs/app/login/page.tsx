@@ -3,7 +3,7 @@
 import { useState, FormEvent, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
-const CORRECT_PASSWORD = 'filmeis2024';
+const CORRECT_PASSWORD = '';
 
 export default function LoginPage() {
   const [password, setPassword] = useState('');
