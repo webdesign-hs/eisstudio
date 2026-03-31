@@ -158,24 +158,6 @@ Die Seite wird jetzt von keiner Suchmaschine indexiert.
 
 ---
 
-## 2025-11-25 - CLAUDE.md Dokumentation
-
-### Erledigt
-
-#### Detaillierte Projektdokumentation erstellt
-- `CLAUDE.md` komplett überarbeitet mit:
-  - Projekt-Übersicht (Tech-Stack, Design)
-  - URLs & Deployment (Production, Staging, Infrastruktur)
-  - Shopify Integration Details
-  - Komplette Projekt-Struktur
-  - Styleguide (Farben, Fonts, Design-Prinzipien)
-  - Bekannte Probleme & Lösungen
-  - Entwicklungs-Checkliste
-- **Wichtige Anweisung:** Nach JEDER Änderung muss ein Eintrag in `progress.md` gemacht werden
-- **Git-Regel:** Keine Co-Authored-By oder Selbst-Credits in Commits
-
----
-
 ## 2025-11-23 - Reports-Sektion Bilder-Fix
 
 ### Erledigt
